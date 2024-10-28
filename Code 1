@@ -1,0 +1,105 @@
+import java.util.Scanner;
+public class IT24100710Q1A 
+{
+
+    public static void main(String[] args) 
+    {
+      
+        Scanner input = new Scanner(System.in);
+
+        String CN[] = new String[5];
+
+        double AN[] = new double [5];
+
+        char TT[] = new char[5];
+        
+        double Amount[] = new double[5];
+
+        int i;
+
+        double TDA = 0;
+        double TWA = 0;
+
+        int COD = 0;
+        int COW = 0;
+
+        double MDA = 0;
+        double MWA = 0;
+        String MDCN = " " ;
+        String MWCN = " ";
+
+        for ( i = 0; i < 5; i++) 
+        { 
+            System.out.print("Enter Customer " + (i + 1) + " Name: ");
+            CN[i] = input.nextLine();
+
+            System.out.print("Enter Account Number: ");
+            AN[i] = input.nextInt();
+            
+
+            System.out.print("Enter Transaction Type: ");
+            TT[i] = input.next().charAt(0);
+            
+
+            System.out.print("Enter Amount: ");
+            Amount[i] = input.nextDouble();
+            input.nextLine(); 
+
+            System.out.println();
+        }
+
+        for(i = 0;i<5;i++)
+        {
+            
+            if(TT[i] == 'D' || TT[i] == 'd')
+            {
+            
+                TDA = TDA + Amount[i];
+                COD = COD + 1;
+                
+                if(Amount[i] > MDA)
+                {
+
+                    MDA = Amount[i];
+                    MDCN = CN[i];                    
+
+                }
+
+                
+            }
+
+            if(TT[i] == 'W' || TT[i] == 'w')
+            {
+
+                TWA = TWA + Amount[i];
+                COW = COW + 1 ;
+
+                if(Amount[i] > MWA)
+                {
+
+                    MWA = Amount[i];
+                    MWCN = CN[i];                    
+
+                }
+
+            }
+            
+        }
+
+
+        System.out.println("Total Deposit Amount is : " +TDA);
+        System.out.println("Total Withdrawal Amount is : " +TWA);
+
+        System.out.println(" ");
+
+        System.out.println("Count of All Deposit Transaction is : " + COD);
+        System.out.println("Count of All Withdrawal Transaction is : " + COW);
+
+        System.out.println(" ");
+
+        System.out.println("Maximum Deposit Amount Customer Name is : " + MDCN );
+        System.out.println("Maximum Withdrawal Amount Customer Name is : "+ MWCN);
+
+        
+    }
+}
